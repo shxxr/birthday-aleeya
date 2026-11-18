@@ -214,16 +214,30 @@ modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
 // Add personal photos locally; they are not uploaded to a server.
-document.getElementById('photos').addEventListener('change',e=>{
- const grid=document.getElementById('gallery');
- [...e.target.files].forEach((file,i)=>{
-  if(!file.type.startsWith('image/'))return;
-  const card=document.createElement('div');card.className='memory';card.style.setProperty('--r',i%2?'2deg':'-2deg');
-  const img=document.createElement('img');img.src=URL.createObjectURL(file);img.alt='Personal memory';
-  const caption=document.createElement('span');caption.textContent='a memory to keep ♡';
-  card.append(img,caption);grid.append(card);
- });
-});
+<section class="section" id="memories">
+  <div class="section-head">
+    <div class="kicker">moments worth keeping</div>
+    <h2>Our little memories</h2>
+    <p>Little moments that mean a lot ♡</p>
+  </div>
+
+  <div class="memory-grid" id="gallery">
+    <div class="memory" style="--r:-2deg">
+      <img src="images/gambar1.jpg" alt="Our memory">
+      <span>pretty moments ♡</span>
+    </div>
+
+    <div class="memory" style="--r:2deg">
+      <img src="images/gambar2.jpg" alt="Our memory">
+      <span>little things</span>
+    </div>
+
+    <div class="memory" style="--r:-1deg">
+      <img src="images/gambar3.jpg" alt="Our memory">
+      <span>forever memories ♡</span>
+    </div>
+  </div>
+</section>
 
 // User-selected audio only; browser needs a tap before playback.
 const audio=document.getElementById('audio'),play=document.getElementById('play');
